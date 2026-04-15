@@ -25,5 +25,12 @@ public:
   letter and at least one lower-case letter
   */
   bool has_mixed_case(string);
+
+  /*
+  Receives a string and returns how many distinct characters occur in the string.
+  The function is case-sensitive and counts any ASCII character, including
+  punctuation, digits, and whitespace. The empty string returns 0.
+  */
+  unsigned int unique_characters(string phrase);
 };
 #endif

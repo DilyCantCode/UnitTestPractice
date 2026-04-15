@@ -1,4 +1,5 @@
 #include "Password.h"
+#include <array>
 #include <string>
 
 using std::string;
@@ -25,4 +26,18 @@ int Password::count_leading_characters(string phrase){
 */
 bool Password::has_mixed_case(string pass){
   return false;
+}
+
+unsigned int Password::unique_characters(string phrase) {
+  std::array<bool, 256> seen{};
+  unsigned int count = 0;
+
+  for (unsigned char ch : phrase) {
+    if (!seen[ch]) {
+      seen[ch] = true;
+      count++;
+    }
+  }
+
+  return count;
 }
