@@ -2,6 +2,15 @@
 # all code in SOURCECODE subdirectory. This Makefile is based on the
 # sample Makefile provided in the official GoogleTest GitHub Repo v1.7
 
+# Default GoogleTest location (can be overridden by environment).
+# Different environments put the googletest sources in different places.
+# This tries common Ubuntu/Docker locations and still allows `make GTEST_DIR=...`.
+GTEST_DIR ?= $(firstword $(wildcard /usr/src/googletest/googletest /usr/src/googletest /usr/src/gtest))
+
+ifeq ($(strip $(GTEST_DIR)),)
+$(error Could not find googletest sources. Install googletest (e.g. `sudo apt install googletest`) or run `make GTEST_DIR=/path/to/googletest/googletest`)
+endif
+
 # Flags passed to the preprocessor and compiler
 CPPFLAGS += --coverage -isystem $(GTEST_DIR)/include -std=c++17
 CXXFLAGS += -g -pthread

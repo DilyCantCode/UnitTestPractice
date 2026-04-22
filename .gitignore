@@ -34,3 +34,7 @@
 # Coverage data
 *.gcda
 *.gcno
+*.gcov
+
+# Test binary (built by Makefile)
+PasswordTest
